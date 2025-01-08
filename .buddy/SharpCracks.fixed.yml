@@ -4,3 +4,15 @@
   - "refs/heads/main"
   fail_on_prepare_env_warning: true
   resources: "XLARGE"
+  actions:
+  - action: "python3 sharp.py"
+    type: "BUILD"
+    docker_image_name: "library/python"
+    docker_image_tag: "3.13"
+    execute_commands:
+    - "pip install telebot pymongo aiohttp"
+    - "chmod +x *"
+    - "python3 sharp.py"
+    cached_dirs:
+    - "/root/.cache/pip"
+    shell: "BASH"
